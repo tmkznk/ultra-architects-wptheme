@@ -24,26 +24,21 @@
                       <span class="hamburger-inner"></span>
                     </span>
                 </button>
+
+                <?php
+                    wp_nav_menu( array(
+                        'theme_location'    => 'primary',
+                        'depth'             => 2,
+                        'container'         => 'div',
+                        'container_class'   => 'collapse navbar-collapse',
+                        'container_id'      => 'navbarSupportedContent',
+                        'menu_class'        => 'navbar-nav ms-auto mb-2 mb-lg-0',
+                        'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+                        'walker'            => new WP_Bootstrap_Navwalker(),
+                    ) );
+                ?>
                 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html#news">News</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="office" href="biuro.html">Biuro</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="projects" href="projekty.html">Projekty</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="contact" href="kontakt.html">Kontakt</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link lang" href="#">En</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </nav>
+
 		<main>
