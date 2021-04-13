@@ -69,7 +69,7 @@ if ( ! function_exists( 'ultra_architects_setup' ) ) {
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
-		set_post_thumbnail_size( 1568, 9999 );
+		// set_post_thumbnail_size( 1568, 9999 );
 
 		register_nav_menus(
 			array(
@@ -242,3 +242,12 @@ function register_navwalker(){
 	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 }
 add_action( 'after_setup_theme', 'register_navwalker' );
+
+/**
+ * Register Google Map
+ */
+function my_acf_google_map_api( $api ){
+    $api['key'] = 'AIzaSyAbX5mfc90PlQiISEe0ccV4cL8ytE6znHQ';
+    return $api;
+}
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');

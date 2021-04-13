@@ -16,7 +16,7 @@
     </head>
     <body <?php body_class(); ?>>
         <nav id="menu" class="navbar navbar-expand-lg fixed-top">
-            <div class="container" id="nav-container">
+            <div class="container with-line" id="nav-container">
                 <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">Ultra Architects</a>
 
                 <button class="hamburger hamburger--spin navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
