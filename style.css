@@ -17274,6 +17274,21 @@ fieldset:disabled .btn {
 body {
 	font-family: "Nunito Sans", sans-serif;
 }
+@media (min-width: 768px) {
+
+	body.admin-bar #menu {
+		top: 32px;
+	}
+}
+
+#menu {
+	position: sticky;
+	top: 0;
+}
+
+#news {
+	min-height: 100vh;
+}
 
 .hamburger .hamburger-box {
 	width: 24px;
@@ -17436,6 +17451,14 @@ body {
 	background: #f4d200 !important;
 }
 
+.navbar .nav-item.lang .nav-link:hover {
+	color: #f4d200;
+}
+
+.navbar .nav-item.lang .nav-link:hover::before {
+	background: #f4d200 !important;
+}
+
 .navbar.is-open {
 	background-color: #000;
 }
@@ -17458,22 +17481,6 @@ body {
 
 .navbar.is-open .hamburger-inner::after {
 	background-color: #fff !important;
-}
-
-main {
-	padding-top: 68px;
-}
-@media (min-width: 992px) {
-
-	main {
-		padding-top: 98px;
-	}
-}
-@media (min-width: 1200px) {
-
-	main {
-		padding-top: 120px;
-	}
 }
 
 .bg-black {
@@ -17527,7 +17534,6 @@ section.page-top {
 	.featured-news {
 		margin-bottom: 2rem;
 		height: calc(100vh - 120px);
-		background-image: url("../img/main.jpg");
 		background-size: cover;
 		background-position: center;
 	}
@@ -17591,6 +17597,11 @@ section.page-top {
 	.news p {
 		font-size: 14px;
 	}
+}
+
+.projects .news .date,
+.projects .news p {
+	display: none;
 }
 
 .gallery img {
@@ -17732,6 +17743,10 @@ span.year {
 
 .fadeInUp {
 	animation-name: fadeInUp;
+}
+
+.alm-listing {
+	margin: 0 -16px !important;
 }
 
 h1,

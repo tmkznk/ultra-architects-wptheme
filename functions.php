@@ -174,7 +174,7 @@ function ultra_architects_scripts() {
 	global $is_IE, $wp_scripts;
 	
 	// use the standard stylesheet.
-	wp_enqueue_style( 'twenty-twenty-one-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get( 'Version' ) );
+	wp_enqueue_style( 'twenty-twenty-one-style', get_template_directory_uri() . '/style.css', array(), '5.7.8', );
 
 	// Threaded comment reply styles.
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -198,6 +198,15 @@ function ultra_architects_scripts() {
 		get_template_directory_uri() . '/assets/js/responsive-embeds.js',
 		array( 'twenty-twenty-one-ie11-polyfills' ),
 		wp_get_theme()->get( 'Version' ),
+		true
+	);
+
+	// Theme script
+	wp_enqueue_script(
+		'theme-embeds-script',
+		get_template_directory_uri() . '/assets/js/app.js',
+		array(),
+		'5.7.5',
 		true
 	);
 }

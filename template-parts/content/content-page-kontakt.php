@@ -20,26 +20,40 @@
 </script>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="container">
-
-		<?php if ( ! is_front_page() ) : ?>
-			<section class="page-top">
-				<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-			</section>
-		<?php elseif ( has_post_thumbnail() ) : ?>
-			<header class="entry-header alignwide">
-				<?php twenty_twenty_one_post_thumbnail(); ?>
-			</header><!-- .entry-header -->
-		<?php endif; ?>
-
-		<div class="entry-content">
+	<div class="container">	
+        <section class="page-top">
+            <?php the_title( '<h1 class="entry-title animate__animated">', '</h1>' ); ?>
+        </section>
+		<div class="entry-content animate__animated">
 			<?php the_content(); ?>
 		</div><!-- .entry-content -->
 
-        <div class="gmap" id="map"></div>
+        <div class="gmap animate__animated" id="map"></div>
 
 	</div>
 </article><!-- #post-<?php the_ID(); ?> -->
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbX5mfc90PlQiISEe0ccV4cL8ytE6znHQ&callback=initMap&libraries=&v=weekly" async></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=key&callback=initMap&libraries=&v=weekly" async></script>
+<script>
+    var isInViewport = function(elem) {
+        var distance = elem.getBoundingClientRect();
+        return (
+            distance.bottom <= ((window.innerHeight + distance.height - 100) || (document.documentElement.clientHeight + distance.height -100)) 
+        );
+    };
+
+    var showItem = function () {
+        var findMe = document.querySelectorAll('.animate__animated');    
+        findMe.forEach(element => {
+            if (isInViewport(element)) {
+                element.classList.add("animate__fadeInUp");
+            }
+        });
+    };
+
+    window.addEventListener('scroll', showItem, false);
+    showItem();
+
+    document.getElementById("nav-container").classList.add("with-line");
+</script>
 

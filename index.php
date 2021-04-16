@@ -9,47 +9,27 @@
 	);
 	$query = new WP_Query( $args );
 ?>
-<?php if ( $query->have_posts() ) : ?>
-	<?php while ( $query->have_posts() ) : ?>
-		<?php  $query->the_post(); ?>
-		<div class="container-fluid wide px-md-0">
-			<div class="featured-news" style="background-image: url(<?php echo get_the_post_thumbnail_url(); ?>);">
-				<?php the_post_thumbnail('post-thumbnail', ['class' => 'img-fluid d-md-none mb-3']); ?>
-				<div class="container-container">
-					<div class="container px-0 px-md-3">
-						<div class="row">
-							<a href="<?php echo esc_url( get_permalink()); ?>" class="col-md-6 offset-md-6">
-								<div class="bg-white">
-									<h3>rok <?php the_time( 'Y' ); ?></h3>
-									<h1 class="mb-4 mb-md-0"><?php the_title(); ?></h1>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	<?php endwhile; ?>
-	<?php wp_reset_postdata(); ?>
-<?php endif; ?>
+<?php
+	if ( $query->have_posts() ) {
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			get_template_part( 'template-parts/content/content-featured' );
+		}
+		wp_reset_postdata();
+	} 
+?>
 
 <!-- main loop -->
 <?php if ( have_posts() ) : ?>
     <div class="container">
         <div id="news">
-            <div class="row masonry-layout">
-				<?php
-					while ( have_posts() ) {
-						the_post();
-						get_template_part( 'template-parts/content/content-excerpt' );
-					}
-				?>
-			</div>
+            <?php 
+				$sticky = get_option( 'sticky_posts' );
+				$sticky = implode( ',', $sticky );
+				echo do_shortcode('[ajax_load_more post_type="post" post__not_in="'.$sticky.'" posts_per_page="3" loading_style="infinite fading-circles" transition="masonry" masonry_selector=".grid-item" masonry_animation="none"]');
+			?>
 		</div>
-		<?php 
-			// Previous/next page navigation.
-			// twenty_twenty_one_the_posts_navigation();
-		?>
+		
 	</div>
 <?php else: ?>
 	<?php 

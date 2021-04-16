@@ -1,5 +1,22 @@
 body{
     font-family: 'Nunito Sans',sans-serif;
+
+    &.admin-bar{
+        #menu{
+            @include media-breakpoint-up(md){
+                top: 32px;
+            }
+        }
+    }
+}
+
+#menu{
+    position: sticky;
+    top: 0;   
+}
+
+#news{
+    min-height: 100vh;
 }
 
 .hamburger {
@@ -163,6 +180,18 @@ body{
                 }
             }
         }
+
+        &.lang{
+            .nav-link{
+                &:hover{
+                    color: $yellow;   
+
+                    &::before{
+                        background: $yellow !important;
+                    }
+                }
+            }
+        }
     }
 
     &.is-open{
@@ -192,17 +221,17 @@ body{
     }
 }
 
-main{
-    padding-top: 68px;
+// main{
+//     padding-top: 68px;
 
-    @include media-breakpoint-up(lg){
-        padding-top: 98px;
-    }
+//     @include media-breakpoint-up(lg){
+//         padding-top: 98px;
+//     }
 
-    @include media-breakpoint-up(xl){
-        padding-top: 120px;
-    }
-}
+//     @include media-breakpoint-up(xl){
+//         padding-top: 120px;
+//     }
+// }
 
 .bg-black{
     background: $black;
@@ -238,7 +267,6 @@ section{
     @include media-breakpoint-up(md){
         margin-bottom: 2rem;
         height: calc(100vh - 120px);
-        background-image: url('../img/main.jpg');
         background-size: cover;
         background-position: center;
     }
@@ -298,6 +326,14 @@ section{
 
         @include media-breakpoint-up(md){
             font-size: 14px;
+        }
+    }
+}
+
+.projects{
+    .news{
+        .date, p{
+            display: none;
         }
     }
 }
@@ -442,4 +478,7 @@ span.year{
 .fadeInUp {
     animation-name: fadeInUp;
 }
-  
+
+.alm-listing{
+    margin: 0 -16px !important;
+}
