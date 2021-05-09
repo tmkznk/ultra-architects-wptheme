@@ -33,7 +33,7 @@
 	</div>
 </article><!-- #post-<?php the_ID(); ?> -->
 
-<script src="https://maps.googleapis.com/maps/api/js?key=yourApiKey&callback=initMap&libraries=&v=weekly" async></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly" async></script>
 <script>
     var isInViewport = function(elem) {
         var distance = elem.getBoundingClientRect();

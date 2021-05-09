@@ -181,7 +181,7 @@ add_action( 'after_setup_theme', 'register_navwalker' );
  * Register Google Map
  */
 function my_acf_google_map_api( $api ){
-    $api['key'] = 'AIzaSyAbX5mfc90PlQiISEe0ccV4cL8ytE6znHQ';
+    $api['key'] = 'YOUR_API_KEY';
     return $api;
 }
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
@@ -426,6 +426,25 @@ if( function_exists('acf_add_local_field_group') ):
 				'key' => 'field_6082c28fd493f',
 				'label' => 'Rok',
 				'name' => 'project-year',
+				'type' => 'text',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+			array(
+				'key' => 'field_6097b33c49d69',
+				'label' => 'Powierzchnia',
+				'name' => 'project-area',
 				'type' => 'text',
 				'instructions' => '',
 				'required' => 0,

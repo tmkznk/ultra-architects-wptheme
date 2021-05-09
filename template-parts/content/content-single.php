@@ -26,9 +26,11 @@
                 <?php echo get_the_title(); ?>
                 <span class="year d-none d-md-inline-block"><?php the_field('project-year'); ?></span></h1>
             <p class="animate__animated">
-                <strong>Architeci:</strong> <?php the_field('project-architects'); ?><br/>
+                <strong>ARCHITEKCI:</strong> <?php the_field('project-architects'); ?><br/>
                 <strong>WSPÓŁPRACA:</strong> <?php the_field('project-cooperation'); ?><br/>
+                <strong>POWIERZCHNIA:</strong> <?php the_field('project-area'); ?>m²<br/>
                 <strong>STATUS:</strong> <?php the_field('project-status'); ?>
+                
             </p>
         </section>
 
