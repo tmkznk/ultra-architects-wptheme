@@ -7,14 +7,12 @@
                     <?php the_title( '<h1 class="entry-title mb-0">', '</h1>' ); ?>
                 </div>
                 <div class="col-6 col-md-8 text-end">
-
-                    
-
                     <?php 
-
                         $active =  htmlspecialchars($_GET["filter"]);
  
-                        $tags = get_tags();
+                        $tags = get_tags(
+                            array('orderby' => 'slug')
+                        );
                         $html1 = '<select class="d-md-none">';
                         $html1 .= '<option>Wszystkie</option>';
                         foreach ( $tags as $tag ) {
@@ -45,7 +43,7 @@
 		</section>
 		
 		<div class="entry-content projects">
-            <?php echo do_shortcode("[ajax_load_more post_type='post' category='projekt' tag='{$active}' posts_per_page='3' loading_style='infinite fading-circles' transition='masonry' masonry_selector='.grid-item' masonry_animation='none']"); ?>
+            <?php echo do_shortcode("[ajax_load_more post_type='post' category='projekt' tag='{$active}' posts_per_page='9' loading_style='infinite fading-circles' transition='masonry' masonry_selector='.grid-item' masonry_animation='none']"); ?>
 		</div><!-- .entry-content -->
 	</div>
 </article><!-- #post-<?php the_ID(); ?> -->

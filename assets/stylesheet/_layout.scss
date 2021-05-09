@@ -62,10 +62,6 @@ body{
     }
 }
 
-
-
-
-    
 .navbar{
     padding:19px 0;
     background-color: $white;
@@ -181,7 +177,7 @@ body{
             }
         }
 
-        &.lang{
+        &.weglot-lang{
             .nav-link{
                 &:hover{
                     color: $yellow;   
@@ -481,4 +477,19 @@ span.year{
 
 .alm-listing{
     margin: 0 -16px !important;
+}
+
+figure.alignfull {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+
+    img{
+        width: 100%;
+        height: auto;
+    }
+}
+
+.wp-block-image img {
+    max-width: 100%;
+    height: auto;
 }

@@ -13,7 +13,7 @@
                 <div class="row">
                     <a href="<?php echo esc_url( get_permalink()); ?>" class="col-md-6 offset-md-6">
                         <div class="bg-white">
-                            <h3>rok <?php the_time( 'Y' ); ?></h3>
+                            <h3><?php the_field('project-year'); ?></h3>
                             <h1 class="mb-4 mb-md-0"><?php the_title(); ?></h1>
                         </div>
                     </a>

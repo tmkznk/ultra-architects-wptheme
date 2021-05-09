@@ -23,7 +23,6 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-		xxx
 		<?php
 		the_content(
 			twenty_twenty_one_continue_reading_text()
@@ -37,7 +36,6 @@
 				'pagelink' => esc_html__( 'Page %', 'twentytwentyone' ),
 			)
 		);
-
 		?>
 	</div><!-- .entry-content -->
 

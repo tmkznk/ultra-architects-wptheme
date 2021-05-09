@@ -45,24 +45,6 @@ if ( ! function_exists( 'ultra_architects_setup' ) ) {
 		 */
 		add_theme_support( 'title-tag' );
 
-		/**
-		 * Add post-formats support.
-		 */
-		add_theme_support(
-			'post-formats',
-			array(
-				'link',
-				'aside',
-				'gallery',
-				'image',
-				'quote',
-				'status',
-				'video',
-				'audio',
-				'chat',
-			)
-		);
-
 		/*
 		 * Enable support for Post Thumbnails on posts and pages.
 		 *
@@ -104,17 +86,6 @@ if ( ! function_exists( 'ultra_architects_setup' ) ) {
 		// Add support for full and wide align images.
 		add_theme_support( 'align-wide' );
 
-
-		/*
-		* Adds starter content to highlight the theme on fresh sites.
-		* This is done conditionally to avoid loading the starter content on every
-		* page load, as it is a one-off operation only needed once in the customizer.
-		*/
-		if ( is_customize_preview() ) {
-			require get_template_directory() . '/inc/starter-content.php';
-			add_theme_support( 'starter-content', ultra_architects_get_starter_content() );
-		}
-
 		// Add support for responsive embedded content.
 		add_theme_support( 'responsive-embeds' );
 
@@ -135,33 +106,6 @@ if ( ! function_exists( 'ultra_architects_setup' ) ) {
 add_action( 'after_setup_theme', 'ultra_architects_setup' );
 
 /**
- * Register widget area.
- *
- * @since Twenty Twenty-One 1.0
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- *
- * @return void
- */
-function ultra_architects_widgets_init() {
-
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Footer', 'ultraarchitects' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here to appear in your footer.', 'ultraarchitects' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
-}
-add_action( 'widgets_init', 'ultra_architects_widgets_init' );
-
-
-
-/**
  * Enqueue scripts and styles.
  *
  * @since Twenty Twenty-One 1.0
@@ -174,12 +118,7 @@ function ultra_architects_scripts() {
 	global $is_IE, $wp_scripts;
 	
 	// use the standard stylesheet.
-	wp_enqueue_style( 'twenty-twenty-one-style', get_template_directory_uri() . '/style.css', array(), '5.7.8', );
-
-	// Threaded comment reply styles.
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+	wp_enqueue_style( 'twenty-twenty-one-style', get_template_directory_uri() . '/style.css', array(), '5.8.1', );
 
 	// Main navigation scripts.
 	if ( has_nav_menu( 'primary' ) ) {
@@ -212,21 +151,8 @@ function ultra_architects_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'ultra_architects_scripts' );
 
-
-
-
 // SVG Icons class.
 require get_template_directory() . '/classes/class-twenty-twenty-one-svg-icons.php';
-
-// Enhance the theme by hooking into WordPress.
-require get_template_directory() . '/inc/template-functions.php';
-
-// Menu functions and filters.
-require get_template_directory() . '/inc/menu-functions.php';
-
-// Custom template tags for the theme.
-require get_template_directory() . '/inc/template-tags.php';
-
 
 /**
  * Calculate classes for the main <html> element.
@@ -242,7 +168,6 @@ function ultraarchitects_the_html_classes() {
 	}
 	echo 'class="' . esc_attr( $classes ) . '"';
 }
-
 
 /**
  * Register Custom Navigation Walker
@@ -260,3 +185,622 @@ function my_acf_google_map_api( $api ){
     return $api;
 }
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+
+
+if( function_exists('acf_add_local_field_group') ):
+	acf_add_local_field_group(array(
+		'key' => 'group_607551da30088',
+		'title' => 'Mapa',
+		'fields' => array(
+			array(
+				'key' => 'field_6075520510e97',
+				'label' => 'googlemap',
+				'name' => 'googlemap',
+				'type' => 'google_map',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'center_lat' => '',
+				'center_lng' => '',
+				'zoom' => '',
+				'height' => '',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'page',
+					'operator' => '==',
+					'value' => '6',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_607987f0bcc4c',
+		'title' => 'Nagrody',
+		'fields' => array(
+			array(
+				'key' => 'field_6079880467257',
+				'label' => 'Nagrody',
+				'name' => 'awards',
+				'type' => 'repeater',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'collapsed' => '',
+				'min' => 0,
+				'max' => 0,
+				'layout' => 'table',
+				'button_label' => '',
+				'sub_fields' => array(
+					array(
+						'key' => 'field_6079882a67258',
+						'label' => 'Tytuł',
+						'name' => 'award-title',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+					),
+					array(
+						'key' => 'field_6079884c67259',
+						'label' => 'Opis',
+						'name' => 'award-description',
+						'type' => 'textarea',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'maxlength' => '',
+						'rows' => '',
+						'new_lines' => '',
+					),
+				),
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'page',
+					'operator' => '==',
+					'value' => '10',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_6082b69a966c7',
+		'title' => 'Link',
+		'fields' => array(
+			array(
+				'key' => 'field_6082b6a820caf',
+				'label' => 'Zewnętrzny link',
+				'name' => 'external-url',
+				'type' => 'url',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_category',
+					'operator' => '==',
+					'value' => 'category:news',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+
+	acf_add_local_field_group(array(
+		'key' => 'group_6082c11fa9c31',
+		'title' => 'Projekt meta',
+		'fields' => array(
+			array(
+				'key' => 'field_6082c12b3c34f',
+				'label' => 'Architekci',
+				'name' => 'project-architects',
+				'type' => 'text',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+			array(
+				'key' => 'field_6082c243d493d',
+				'label' => 'Współpraca',
+				'name' => 'project-cooperation',
+				'type' => 'text',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+			array(
+				'key' => 'field_6082c266d493e',
+				'label' => 'Status',
+				'name' => 'project-status',
+				'type' => 'select',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					'zrealizowany' => 'zrealizowany',
+					'nie zrealizowany' => 'nie zrealizowany',
+					'w trakcie realizacji' => 'w trakcie realizacji',
+				),
+				'default_value' => false,
+				'allow_null' => 0,
+				'multiple' => 0,
+				'ui' => 0,
+				'return_format' => 'value',
+				'ajax' => 0,
+				'placeholder' => '',
+			),
+			array(
+				'key' => 'field_6082c28fd493f',
+				'label' => 'Rok',
+				'name' => 'project-year',
+				'type' => 'text',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_category',
+					'operator' => '==',
+					'value' => 'category:projekt',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_60798878d8e9e',
+		'title' => 'Wykłady',
+		'fields' => array(
+			array(
+				'key' => 'field_60798878ded41',
+				'label' => 'Wykłady',
+				'name' => 'lectures',
+				'type' => 'repeater',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'collapsed' => '',
+				'min' => 0,
+				'max' => 0,
+				'layout' => 'table',
+				'button_label' => '',
+				'sub_fields' => array(
+					array(
+						'key' => 'field_60798878e2936',
+						'label' => 'Tytuł',
+						'name' => 'lecture-title',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+					),
+					array(
+						'key' => 'field_60798878e6455',
+						'label' => 'Opis',
+						'name' => 'lecture-description',
+						'type' => 'textarea',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'maxlength' => '',
+						'rows' => '',
+						'new_lines' => '',
+					),
+				),
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'page',
+					'operator' => '==',
+					'value' => '10',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_607988763d8fe',
+		'title' => 'Wystawy',
+		'fields' => array(
+			array(
+				'key' => 'field_6079887641e27',
+				'label' => 'Wystawy',
+				'name' => 'exhibitions',
+				'type' => 'repeater',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'collapsed' => '',
+				'min' => 0,
+				'max' => 0,
+				'layout' => 'table',
+				'button_label' => '',
+				'sub_fields' => array(
+					array(
+						'key' => 'field_6079887645993',
+						'label' => 'Tytuł',
+						'name' => 'exhibition-title',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+					),
+					array(
+						'key' => 'field_607988764966a',
+						'label' => 'Opis',
+						'name' => 'exhibition-description',
+						'type' => 'textarea',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'maxlength' => '',
+						'rows' => '',
+						'new_lines' => '',
+					),
+				),
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'page',
+					'operator' => '==',
+					'value' => '10',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_607985347c639',
+		'title' => 'Założyciele',
+		'fields' => array(
+			array(
+				'key' => 'field_607985347fafb',
+				'label' => 'Założyciele',
+				'name' => 'founders',
+				'type' => 'repeater',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'collapsed' => '',
+				'min' => 0,
+				'max' => 0,
+				'layout' => 'table',
+				'button_label' => '',
+				'sub_fields' => array(
+					array(
+						'key' => 'field_60798534836da',
+						'label' => 'Imię i nazwisko',
+						'name' => 'founder-name',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+					),
+					array(
+						'key' => 'field_6079853487053',
+						'label' => 'Zdjęcie',
+						'name' => 'founder-photo',
+						'type' => 'image',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'return_format' => 'array',
+						'preview_size' => 'thumbnail',
+						'library' => 'all',
+						'min_width' => '',
+						'min_height' => '',
+						'min_size' => '',
+						'max_width' => '',
+						'max_height' => '',
+						'max_size' => '',
+						'mime_types' => '',
+					),
+				),
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'page',
+					'operator' => '==',
+					'value' => '10',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_607573a130438',
+		'title' => 'Zespół',
+		'fields' => array(
+			array(
+				'key' => 'field_607573bfd0927',
+				'label' => 'Zespół',
+				'name' => 'team',
+				'type' => 'repeater',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'collapsed' => '',
+				'min' => 0,
+				'max' => 0,
+				'layout' => 'table',
+				'button_label' => '',
+				'sub_fields' => array(
+					array(
+						'key' => 'field_60757408d0928',
+						'label' => 'Imię i nazwisko',
+						'name' => 'team-member-name',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+					),
+					array(
+						'key' => 'field_6075742fd0929',
+						'label' => 'Zdjęcie',
+						'name' => 'team-member-photo',
+						'type' => 'image',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'return_format' => 'array',
+						'preview_size' => 'thumbnail',
+						'library' => 'all',
+						'min_width' => '',
+						'min_height' => '',
+						'min_size' => '',
+						'max_width' => '',
+						'max_height' => '',
+						'max_size' => '',
+						'mime_types' => '',
+					),
+				),
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'page',
+					'operator' => '==',
+					'value' => '10',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+	));
+	
+endif;

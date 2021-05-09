@@ -17451,11 +17451,11 @@ body {
 	background: #f4d200 !important;
 }
 
-.navbar .nav-item.lang .nav-link:hover {
+.navbar .nav-item.weglot-lang .nav-link:hover {
 	color: #f4d200;
 }
 
-.navbar .nav-item.lang .nav-link:hover::before {
+.navbar .nav-item.weglot-lang .nav-link:hover::before {
 	background: #f4d200 !important;
 }
 
@@ -17747,6 +17747,21 @@ span.year {
 
 .alm-listing {
 	margin: 0 -16px !important;
+}
+
+figure.alignfull {
+	width: 100vw;
+	margin-left: calc(50% - 50vw);
+}
+
+figure.alignfull img {
+	width: 100%;
+	height: auto;
+}
+
+.wp-block-image img {
+	max-width: 100%;
+	height: auto;
 }
 
 h1,
