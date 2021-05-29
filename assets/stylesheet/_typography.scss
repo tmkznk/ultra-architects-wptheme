@@ -23,11 +23,15 @@ h1, .heading-1{
 }
 
 h2, .heading-2{
-    font-size: 40px;
+    font-size: 24px;
     font-weight: 800;
     color: $black;
     margin: 0 0 1rem 0;
     transition: color 0.3s ease-in-out;
+
+    @include media-breakpoint-up(md){
+        font-size: 40px;
+    }
 }
       
 h3, .heading-3{

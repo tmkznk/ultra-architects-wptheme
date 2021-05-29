@@ -18,7 +18,6 @@
         </section>
     </div>
 
-
 	<div class="container">
 		<section>
 			<h1 class="animate__animated">
@@ -30,7 +29,10 @@
                 <strong>WSPÓŁPRACA:</strong> <?php the_field('project-cooperation'); ?><br/>
                 <strong>POWIERZCHNIA:</strong> <?php the_field('project-area'); ?>m²<br/>
                 <strong>STATUS:</strong> <?php the_field('project-status'); ?>
-                
+                <?php if (get_field('project-awards')) : ?>
+                    <br/>
+                    <strong>NAGRODY:</strong> <?php the_field('project-awards'); ?>        
+                <?php endif; ?>
             </p>
         </section>
 

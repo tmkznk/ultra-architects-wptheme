@@ -118,7 +118,7 @@ function ultra_architects_scripts() {
 	global $is_IE, $wp_scripts;
 	
 	// use the standard stylesheet.
-	wp_enqueue_style( 'twenty-twenty-one-style', get_template_directory_uri() . '/style.css', array(), '5.8.1', );
+	wp_enqueue_style( 'twenty-twenty-one-style', get_template_directory_uri() . '/style.css', array(), '5.8.2', );
 
 	// Main navigation scripts.
 	if ( has_nav_menu( 'primary' ) ) {
@@ -445,6 +445,25 @@ if( function_exists('acf_add_local_field_group') ):
 				'key' => 'field_6097b33c49d69',
 				'label' => 'Powierzchnia',
 				'name' => 'project-area',
+				'type' => 'text',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+			array(
+				'key' => 'field_60b25ad48172f',
+				'label' => 'Nagrody',
+				'name' => 'project-awards',
 				'type' => 'text',
 				'instructions' => '',
 				'required' => 0,

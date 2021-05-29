@@ -26,7 +26,7 @@
             <?php 
 				$sticky = get_option( 'sticky_posts' );
 				$sticky = implode( ',', $sticky );
-				echo do_shortcode('[ajax_load_more post_type="post" post__not_in="'.$sticky.'" posts_per_page="9" loading_style="infinite fading-circles" transition="masonry" masonry_selector=".grid-item" masonry_animation="none"]');
+				echo do_shortcode('[ajax_load_more post_type="post" category="news" post__not_in="'.$sticky.'" posts_per_page="9" loading_style="infinite fading-circles" transition="masonry" masonry_selector=".grid-item" masonry_animation="none"]');
 			?>
 		</div>
 		

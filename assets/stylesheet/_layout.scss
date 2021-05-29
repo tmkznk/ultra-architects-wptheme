@@ -19,49 +19,6 @@ body{
     min-height: 100vh;
 }
 
-.hamburger {
-
-    .hamburger-box{
-        width: 24px;
-    
-        .hamburger-inner{
-            right: 0;
-            width: 24px;
-    
-            &::before {
-                right: 0;    
-                width: 24px;
-            }
-        
-            &::after {
-                right: 0;
-                width: 24px;
-            }
-        }
-    }
-
-    &.collapsed{
-        .hamburger-box{
-            width: 24px;
-        
-            .hamburger-inner{
-                right: 0;
-                width: 16px;
-        
-                &::before {
-                    right: 0;    
-                    width: 8px;
-                }
-            
-                &::after {
-                    right: 0;
-                    width: 24px;
-                }
-            }
-        }
-    }
-}
-
 .navbar{
     padding:19px 0;
     background-color: $white;
@@ -89,13 +46,25 @@ body{
         font-weight: 800;
         text-transform: uppercase;
         color: $black;
+        width: 240px;
+
+        @include media-breakpoint-up(md){
+            width: 340px;
+        }
 
         @include media-breakpoint-up(lg){
+            width: 400px;
             font-size: 40px;
         }
 
         @include media-breakpoint-up(xl){
+            width: 550px;
             font-size: 55px;
+        }
+
+        svg{
+            width: 100%;
+            height: auto;
         }
     }
 
@@ -194,7 +163,11 @@ body{
         background-color: $black;
 
         .navbar-brand{
-            color: $white;
+            svg{
+                path{
+                    fill: $white;
+                }
+            }
         }
 
         .nav-item{
@@ -340,12 +313,34 @@ section{
     }
 }
 
+select{
+    width: 100%;
+    background: none;
+    border: 1px solid $black;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 0 0.5rem;
+
+    background-image:
+        linear-gradient(45deg, transparent 50%, $black 50%),
+        linear-gradient(135deg, $black 50%, transparent 50%);
+      
+    background-position:
+        calc(100% - 10px) 10px,
+        calc(100% - 5px) 10px;
+       
+    background-size:
+        5px 5px,
+        5px 5px; 
+    background-repeat: no-repeat;
+}
 
 .filters{
     .nav-item{
         .nav-link{
             font-size: 16px;
-            font-weight: 400;
+            font-weight: 800;
             color: $black;
             padding: 0 !important;
             margin: 0 0 0 46px;
@@ -357,7 +352,6 @@ section{
 
             &.active{
                 border-bottom:3px solid $black;
-                font-weight: 800;
             }
         }
     }
