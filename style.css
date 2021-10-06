@@ -682,7 +682,7 @@ progress {
 		max-width: 1140px;
 	}
 }
-@media (min-width: 1440px) {
+@media (min-width: 1420px) {
 
 	.container-xxl,
 	.container-xl,
@@ -1777,7 +1777,7 @@ progress {
 		--bs-gutter-y: 3rem;
 	}
 }
-@media (min-width: 1440px) {
+@media (min-width: 1420px) {
 
 	.col-xxl {
 		flex: 1 0 0%;
@@ -2190,7 +2190,7 @@ progress {
 		-webkit-overflow-scrolling: touch;
 	}
 }
-@media (max-width: 1439.98px) {
+@media (max-width: 1419.98px) {
 
 	.table-responsive-xxl {
 		overflow-x: auto;
@@ -3956,7 +3956,7 @@ fieldset:disabled .btn {
 		left: auto /* rtl:ignore */;
 	}
 }
-@media (min-width: 1440px) {
+@media (min-width: 1420px) {
 
 	.dropdown-menu-xxl-start {
 		--bs-position: start;
@@ -4614,7 +4614,7 @@ fieldset:disabled .btn {
 		display: none;
 	}
 }
-@media (min-width: 1440px) {
+@media (min-width: 1420px) {
 
 	.navbar-expand-xxl {
 		flex-wrap: nowrap;
@@ -5601,7 +5601,7 @@ fieldset:disabled .btn {
 		border-left-width: 1px;
 	}
 }
-@media (min-width: 1440px) {
+@media (min-width: 1420px) {
 
 	.list-group-horizontal-xxl {
 		flex-direction: row;
@@ -6181,7 +6181,7 @@ fieldset:disabled .btn {
 		border-radius: 0;
 	}
 }
-@media (max-width: 1439.98px) {
+@media (max-width: 1419.98px) {
 
 	.modal-fullscreen-xxl-down {
 		width: 100vw;
@@ -7016,7 +7016,7 @@ fieldset:disabled .btn {
 		z-index: 1020;
 	}
 }
-@media (min-width: 1440px) {
+@media (min-width: 1420px) {
 
 	.sticky-xxl-top {
 		position: sticky;
@@ -10899,7 +10899,7 @@ fieldset:disabled .btn {
 		text-align: center !important;
 	}
 }
-@media (min-width: 1440px) {
+@media (min-width: 1420px) {
 
 	.float-xxl-start {
 		float: left !important;
@@ -17387,7 +17387,7 @@ body {
 		margin: 0 0 0 48px;
 	}
 }
-@media (min-width: 1440px) {
+@media (min-width: 1420px) {
 
 	.navbar .nav-item .nav-link {
 		margin: 0 0 0 58px;
@@ -17575,7 +17575,6 @@ section.page-top {
 	}
 }
 
-.projects .news .date,
 .projects .news p {
 	display: none;
 }
@@ -17781,7 +17780,7 @@ h1,
 		margin: 0 0 1.5rem 0;
 	}
 }
-@media (min-width: 1440px) {
+@media (min-width: 1420px) {
 
 	h1,
 	.h1,
@@ -17847,7 +17846,7 @@ p {
 		margin: 0 0 1.75rem 0;
 	}
 }
-@media (min-width: 1440px) {
+@media (min-width: 1420px) {
 
 	p {
 		font-size: 22px;

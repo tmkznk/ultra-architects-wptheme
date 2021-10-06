@@ -13,13 +13,13 @@
                         $tags = get_tags(
                             array('orderby' => 'slug')
                         );
-                        $html1 = '<select class="d-md-none">';
-                        $html1 .= '<option>Wszystkie</option>';
+                        $html1 = '<select class="d-md-none" id="filter" onchange="changeFilter()">';
+                        $html1 .= '<option value="">Wszystkie</option>';
                         foreach ( $tags as $tag ) {
                             $tag_link = get_tag_link( $tag->term_id );
                             $tag_name = $tag->name;
                             $tag_slug = $tag->slug;
-                            $html1 .= "<option value='{$tag->slug}'>{$tag->name}</option>";
+                            $html1 .=  $active == $tag->slug ? "<option selected value='{$tag->slug}'>{$tag->name}</option>" : "<option value='{$tag->slug}'>{$tag->name}</option>" ;
                         }
                         $html1 .= '</select>';
                         echo $html1;
@@ -50,5 +50,10 @@
 
 <script>
     document.getElementById("nav-container").classList.add("with-line");
+
+    function changeFilter() {
+        var filter = document.getElementById("filter").value;
+        window.location.href = "?filter="+filter;
+    }
 </script>
 
